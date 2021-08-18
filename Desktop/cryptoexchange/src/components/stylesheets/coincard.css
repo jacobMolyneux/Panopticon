@@ -1,0 +1,14 @@
+#cardContainer {
+  display: flex;
+  border: 1px solid purple;
+  width: 300px;
+  margin: 10px;
+  border-radius: 4px;
+  justify-content: space-around;
+}
+#cardContainer:hover {
+  background: rgb(230, 221, 221);
+}
+#name {
+  color: purple;
+}
