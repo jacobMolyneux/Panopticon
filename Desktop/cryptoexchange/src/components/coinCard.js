@@ -1,32 +1,35 @@
 import "./stylesheets/coincard.css";
-import { getHistoricalData } from "../connect.js";
+import { getHistoricalData, getExchangeRate } from "../connect.js";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const CoinCard = (props) => {
-  let [displayData, setDisplayData] = useState(false);
-  const ShowCoinData = () => {
-    setDisplayData((displayData = true));
-    if ((displayData = false)) {
-      console.log("Display data state is false true");
-    } else if ((displayData = true)) {
-      console.log("displayData is true!!!");
-      return (
-        <div>
-          <h1> the card has been clicked</h1>
-        </div>
+export default function CoinCard(props) {
+  const [prices, setPrice] = useState(null);
+  const [coinName, setCoinName] = useState(null);
+  const key = "8C2R26DMRMVREBOX";
+
+  useEffect(() => {
+    getData();
+
+    // this will fetch the data
+    async function getData() {
+      const response = await fetch(
+        `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${props.coinCode}&to_currency=USD&apikey=${key}`
+      );
+      const data = await response.json();
+      console.log(data["Realtime Currency Exchange Rate"]);
+
+      // store the data in the price state
+      setPrice(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]);
+      setCoinName(
+        data["Realtime Currency Exchange Rate"]["2. From_Currency Name"]
       );
     }
-  };
+  }, []);
   return (
     <div id="cardContainer">
-      <div id="coinLogo">Bitcoin</div>
-      <div id="cardDetails">
-        <h2 id="name">{props.name.toUpperCase()}</h2>
-        <p>Price: ${props.price}</p>
-      </div>
-      {/* Coin Data Card */}
+      <h1> {coinName}</h1>
+      <p>Price: ${prices}</p>
     </div>
   );
-};
-export default CoinCard;
+}

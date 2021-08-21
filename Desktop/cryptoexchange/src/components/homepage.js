@@ -1,5 +1,5 @@
 import CoinCard from "./coinCard";
-import { getExchangeRate } from "../connect.js";
+// import { getExchangeRate } from "../connect.js";
 import React, { useState } from "react";
 
 const Homepage = () => {
@@ -14,8 +14,6 @@ const Homepage = () => {
 
           <div id="highlightedCoinDisplay">
             <CoinCard name="bitcoin" price={50000} />
-            <CoinCard name="Ethereum" price={1000} />
-            <CoinCard name="Doge Coin" price={1} />
           </div>
 
           <button
