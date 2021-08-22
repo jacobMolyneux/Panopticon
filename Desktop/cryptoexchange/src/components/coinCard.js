@@ -17,7 +17,7 @@ export default function CoinCard(props) {
         `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${props.coinCode}&to_currency=USD&apikey=${key}`
       );
       const data = await response.json();
-      console.log(data["Realtime Currency Exchange Rate"]);
+      // console.log(data["Realtime Currency Exchange Rate"]);
 
       // store the data in the price state
       setPrice(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]);

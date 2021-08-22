@@ -5,6 +5,7 @@ import "./App.css";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CoinCard from "./components/coinCard.js";
 import { useState, useEffect } from "react";
+import { DataTable } from "./components/dataTable";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <h1> Coins </h1>
       <CoinCard coinCode="BTC" />
       <CoinCard coinCode="ETH" />
+      <DataTable />
     </div>
   );
 }
