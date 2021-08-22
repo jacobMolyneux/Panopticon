@@ -9,10 +9,12 @@ import { DataTable } from "./components/dataTable";
 
 export default function App() {
   return (
-    <div id="Container">
-      <h1> Coins </h1>
-      <CoinCard coinCode="BTC" />
-      <CoinCard coinCode="ETH" />
+    <div id="App">
+      <div id="CoinCardsContainer">
+        <h1> Coins </h1>
+        <CoinCard coinCode="BTC" />
+        <CoinCard coinCode="ETH" />
+      </div>
       <DataTable />
     </div>
   );

@@ -10,6 +10,10 @@ const DataTable = () => {
 
   const key = "8C2R26DMRMVREBOX";
 
+  // ohlc is an Open, high, low, close array in that format
+  let ohlc = [];
+  let timeLabels = [];
+
   useEffect(() => {
     getHistoricalData();
     async function getHistoricalData() {
@@ -19,64 +23,36 @@ const DataTable = () => {
       const data = await response.json();
       console.log("historical Data is:");
       console.log(data["Time Series (Digital Currency Daily)"]);
+      let coinData = data["Time Series (Digital Currency Daily)"];
+
+      let i = 0;
+      for (var time in coinData) {
+        var coinInfo = coinData[time];
+        timeLabels.push(time);
+        ohlc.push(
+          // Number(coinInfo["1a. open (USD)"]),
+          // Number(coinInfo["2a. high (USD)"]),
+          // Number(coinInfo["3a. low (USD)"]),
+          Number(coinInfo["4a. close (USD)"])
+        );
+      }
+
+      console.log(`the ohlc values are: `);
+      console.log(ohlc);
+      console.log(" the time labels are: ");
+      console.log(timeLabels);
     }
   }, []);
 
   const Chart = () => {
     setChartData({
-      labels: [
-        "20/03",
-        "21/03",
-        "22/03",
-        "23/03",
-        "24/03",
-        "25/03",
-        "26/03",
-        "27/03",
-        "28/03",
-        "29/03",
-      ],
+      labels: timeLabels,
       datasets: [
         {
-          label: "# of Votes",
-          data: [
-            1,
-            2,
-            3,
-            14,
-            9,
-            4,
-            5,
-            6,
-            7,
-            20,
-            12,
-            13,
-            15,
-            2,
-            5,
-            16,
-            19,
-            8,
-            9,
-            10,
-          ],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
+          label: "CoinPrice",
+          data: ohlc,
+          backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+          borderColor: ["rgba(255, 99, 132, 1)"],
           borderWidth: 1,
         },
       ],
@@ -93,9 +69,23 @@ const DataTable = () => {
         <Line
           data={chartData}
           options={{
+            scales: {
+              x: {
+                type: "time",
+              },
+            },
             responsive: true,
             title: "Thiccness Scale",
             display: true,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
           }}
         />
       </div>

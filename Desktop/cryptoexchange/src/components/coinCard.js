@@ -28,7 +28,7 @@ export default function CoinCard(props) {
   }, []);
   return (
     <div id="cardContainer">
-      <h1> {coinName}</h1>
+      <h1 id="name"> {coinName}</h1>
       <p>Price: ${prices}</p>
     </div>
   );
