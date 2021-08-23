@@ -8,14 +8,47 @@ import { useState, useEffect } from "react";
 import { DataTable } from "./components/dataTable";
 
 export default function App() {
-  return (
-    <div id="App">
-      <div id="CoinCardsContainer">
-        <h1> Coins </h1>
-        <CoinCard coinCode="BTC" />
-        <CoinCard coinCode="ETH" />
+  let [tableVisibility, setTableVisibility] = useState(false);
+  if (tableVisibility === true) {
+    return (
+      <div id="App">
+        <div id="siteBanner">
+          <h1>Panopticon</h1>
+        </div>
+        <div id="CoinCardsContainer">
+          <CoinCard coinCode="BTC" />
+          <CoinCard coinCode="ETH" />
+          <CoinCard coinCode="DOGE" />
+        </div>
+        <button
+          id="showTable"
+          onClick={() => setTableVisibility((tableVisibility = false))}
+        >
+          Hide Table
+        </button>
+        <DataTable />
       </div>
-      <DataTable />
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div id="App">
+        <div id="siteBanner">
+          <h1>Panopticon</h1>
+        </div>
+        <div id="CoinCardsContainer">
+          <CoinCard coinCode="BTC" />
+          <CoinCard coinCode="ETH" />
+          <CoinCard coinCard="DOGE" />
+          <CoinCard coinCard="ADA" />
+          <button
+            id="showTable"
+            onClick={() => setTableVisibility((tableVisibility = true))}
+          >
+            {" "}
+            Show Table
+          </button>
+        </div>
+      </div>
+    );
+  }
 }

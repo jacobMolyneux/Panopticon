@@ -28,7 +28,7 @@ const DataTable = () => {
       let i = 0;
       for (var time in coinData) {
         var coinInfo = coinData[time];
-        timeLabels.push(time);
+        timeLabels.push(String(time));
         ohlc.push(
           // Number(coinInfo["1a. open (USD)"]),
           // Number(coinInfo["2a. high (USD)"]),
@@ -41,27 +41,24 @@ const DataTable = () => {
       console.log(ohlc);
       console.log(" the time labels are: ");
       console.log(timeLabels);
+      const Chart = () => {
+        setChartData({
+          labels: timeLabels,
+          datasets: [
+            {
+              label: "CoinPrice",
+              data: ohlc.reverse(),
+              backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+              borderColor: ["rgba(255, 99, 132, 1)"],
+              borderWidth: 1,
+            },
+          ],
+        });
+      };
+      Chart();
     }
   }, []);
 
-  const Chart = () => {
-    setChartData({
-      labels: timeLabels,
-      datasets: [
-        {
-          label: "CoinPrice",
-          data: ohlc,
-          backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-          borderColor: ["rgba(255, 99, 132, 1)"],
-          borderWidth: 1,
-        },
-      ],
-    });
-  };
-
-  useEffect(() => {
-    Chart();
-  }, []);
   return (
     <div id="DataTableContainer">
       <h1 id="NameDisplay"> Bitcoin </h1>

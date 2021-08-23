@@ -24,12 +24,13 @@ export default function CoinCard(props) {
       setCoinName(
         data["Realtime Currency Exchange Rate"]["2. From_Currency Name"]
       );
+      console.log(data["Realtime Currency Exchange Rate"]);
     }
   }, []);
   return (
     <div id="cardContainer">
       <h1 id="name"> {coinName}</h1>
-      <p>Price: ${prices}</p>
+      <p id="priceDisplay">Price: ${prices}</p>
     </div>
   );
 }
