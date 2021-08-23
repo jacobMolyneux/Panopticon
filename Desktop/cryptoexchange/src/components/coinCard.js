@@ -1,7 +1,7 @@
 import "./stylesheets/coincard.css";
-import { getHistoricalData, getExchangeRate } from "../connect.js";
+
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function CoinCard(props) {
   const [prices, setPrice] = useState(null);
@@ -20,7 +20,11 @@ export default function CoinCard(props) {
       // console.log(data["Realtime Currency Exchange Rate"]);
 
       // store the data in the price state
-      setPrice(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]);
+      setPrice(
+        Number(
+          data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
+        ).toFixed(2)
+      );
       setCoinName(
         data["Realtime Currency Exchange Rate"]["2. From_Currency Name"]
       );

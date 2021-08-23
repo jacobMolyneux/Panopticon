@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { getHistoricalData } from "../connect";
+
 import "./stylesheets/dataTable.css";
-import { Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 const DataTable = () => {
   const [chartData, setChartData] = useState({});
-  const [employeeSalary, setEmployeeSalary] = useState([]);
-  const [employeeAge, setEmployeeAge] = useState([]);
 
   const key = "8C2R26DMRMVREBOX";
 
@@ -25,7 +23,6 @@ const DataTable = () => {
       console.log(data["Time Series (Digital Currency Daily)"]);
       let coinData = data["Time Series (Digital Currency Daily)"];
 
-      let i = 0;
       for (var time in coinData) {
         var coinInfo = coinData[time];
         timeLabels.push(String(time));
