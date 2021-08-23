@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Panopticon/static/css/main.0453931e.chunk.css",
+    "main.js": "/Panopticon/static/js/main.31e4adcd.chunk.js",
+    "main.js.map": "/Panopticon/static/js/main.31e4adcd.chunk.js.map",
+    "runtime-main.js": "/Panopticon/static/js/runtime-main.887cec6b.js",
+    "runtime-main.js.map": "/Panopticon/static/js/runtime-main.887cec6b.js.map",
+    "static/js/2.450e694c.chunk.js": "/Panopticon/static/js/2.450e694c.chunk.js",
+    "static/js/2.450e694c.chunk.js.map": "/Panopticon/static/js/2.450e694c.chunk.js.map",
+    "index.html": "/Panopticon/index.html",
+    "static/css/main.0453931e.chunk.css.map": "/Panopticon/static/css/main.0453931e.chunk.css.map",
+    "static/js/2.450e694c.chunk.js.LICENSE.txt": "/Panopticon/static/js/2.450e694c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.887cec6b.js",
+    "static/js/2.450e694c.chunk.js",
+    "static/css/main.0453931e.chunk.css",
+    "static/js/main.31e4adcd.chunk.js"
+  ]
+}
